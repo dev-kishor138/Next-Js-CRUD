@@ -1,5 +1,5 @@
+// src/models/topic.js
 import mongoose, { Schema } from "mongoose";
-
 
 const topicSchema = new Schema(
     {
@@ -9,9 +9,9 @@ const topicSchema = new Schema(
     {
         timestamps: true
     }
-)
+);
 
-const Topic = mongoose.model.Topic || mongoose.model('Topic', topicSchema);
-
+// Use existing model if already defined, otherwise define it
+const Topic = mongoose.models.Topic || mongoose.model('Topic', topicSchema);
 
 export default Topic;
