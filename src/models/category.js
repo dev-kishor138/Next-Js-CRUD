@@ -4,37 +4,31 @@ const categorySchema = new Schema(
     {
         title: {
             type: String,
-            required: true,
-            minLength: 3,
-            maxLength: 100,
+            required: [true, 'Category title is required'],
+            trim: true,
+            minLength: [3, 'Title must be at least 3 characters long'],
+            maxLength: [100, 'Title cannot exceed 100 characters'],
         },
         slug: {
             type: String,
-            required: true,
-            minLength: 3,
-            maxLength: 100,
+            required: [true, 'Slug is required'],
+            minLength: [3, 'Slug must be at least 3 characters long'],
+            maxLength: [100, 'Slug cannot exceed 100 characters'],
+            unique: true,
+            index: true,
         },
         image: {
             type: {
-                name: {
-                    type: String,
-                    required: true,
-                },
-                data: {
-                    type: Buffer,
-                    required: true,
-                },
-                contentType: {
-                    type: String,
-                    required: true,
-                },
+                url: { type: String, required: true },
+                contentType: { type: String, required: false },
             },
             required: true,
         },
         status: {
             type: String,
-            enum: ['active', 'inactive'], // Define allowed values
-            default: 'inactive', // Correct default syntax
+            enum: ['active', 'inactive'],
+            default: 'inactive',
+            index: true,
         },
     },
     {

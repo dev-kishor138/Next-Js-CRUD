@@ -1,9 +1,19 @@
-import React from "react";
-import BlogCard from "./BlogCard";
 
-const AllBlog = () => {
+import BlogCard from "./BlogCard";
+// import getBlogs from "@/getData/getBlogs";
+
+const AllBlog = async () => {
+
+  // const { blogs } = await getBlogs();
+
+  // console.log(blogs);
+
   return (
     <div className="grid grid-cols-3 gap-4">
+      {/* {blogs.map((blog) => (
+        <BlogCard key={blog._id} blog={blog} />
+      ))} */}
+
       <BlogCard />
       <BlogCard />
       <BlogCard />

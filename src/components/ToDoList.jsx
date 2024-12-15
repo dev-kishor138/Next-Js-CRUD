@@ -1,28 +1,15 @@
 import Link from "next/link";
 import RemoveBtn from "./RemoveBtn";
 import { HiPencilAlt } from 'react-icons/hi'
+import getData from "@/getData/getData";
+// import getTopics from "@/getData/getTopics";
 
-const getTopics = async () => {
-    try {
-        const res = await fetch('http://localhost:3000/api/topics', {
-            cache: 'no-store'
-        });
 
-        if (!res.ok) {
-            throw new Error("Failed To fetch Data");
-        }
-
-        return res.json();
-    } catch (error) {
-        console.log('Error Loading Data', error);
-
-    }
-};
 
 
 const ToDoList = async () => {
 
-    const { topics } = await getTopics();
+    const { topics } = await getData('topics');
 
     return (
         <>
